@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1017576810582030018}
   - component: {fileID: 6381157504580889950}
   - component: {fileID: 4898794798936453270}
+  - component: {fileID: 5945447783705424919}
   m_Layer: 7
   m_Name: Bird
   m_TagString: Enemy
@@ -198,3 +199,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSoundEffect: {fileID: 0}
+--- !u!114 &5945447783705424919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807875952139589764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac4c3d9e9264f11b04cc4a0aa63930d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

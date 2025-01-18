@@ -34,6 +34,6 @@ public class Bird : MonoBehaviour
     
     public void Die()
     {
-        Destroy(gameObject);
+        anim.SetBool("Dead",true);
     }
 }
