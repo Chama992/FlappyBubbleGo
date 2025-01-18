@@ -27,7 +27,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        if (other.CompareTag("Enemy"))
+        {
+            Bird bird = other.GetComponent<Bird>();
+            if (bird)
+            {
+                bird.Die();
+            }
+        }
     }
 
     public void Initialize( float _moveSpeed,float _scale,Vector3 _moveDirection)
