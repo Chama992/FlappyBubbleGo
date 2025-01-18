@@ -1,11 +1,13 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class InGameUIController : SingleTon<InGameUIController>
 {
     public TMP_Text scoreText;
     public TMP_Text alertText;
+    
     public void SetScore(int score)
     {
         scoreText.text ="Score:" +  score.ToString();
@@ -15,4 +17,5 @@ public class InGameUIController : SingleTon<InGameUIController>
     {
         alertText.text =alert;
     }
+    
 }

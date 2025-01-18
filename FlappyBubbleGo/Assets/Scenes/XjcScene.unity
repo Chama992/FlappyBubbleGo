@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8443cd574620124cb9e06e08efc5568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canGenerate: 0
   birdPrefab: {fileID: 6807875952139589764, guid: 8633a41df99d23d4a82f06ee1e45a651, type: 3}
   generateTime: 5
 --- !u!4 &174132079
@@ -1581,6 +1582,8 @@ MonoBehaviour:
   GameOverPanel: {fileID: 443837517}
   mouseTexture: {fileID: 2800000, guid: c65c5679c001f394e851c582270902c5, type: 3}
   score: 0
+  bgm: {fileID: 0}
+  obgm: {fileID: 0}
 --- !u!4 &612144502
 Transform:
   m_ObjectHideFlags: 0
@@ -2408,8 +2411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945001c7caa2df84aa1b8e39cf20e8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.01
+  speed: -0.005
   weiyi: -0.14
+  moveFlag: 0
 --- !u!4 &1141856574
 Transform:
   m_ObjectHideFlags: 0
@@ -2543,6 +2547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1700903029}
+  alertText: {fileID: 0}
 --- !u!1 &1393918779
 GameObject:
   m_ObjectHideFlags: 0
