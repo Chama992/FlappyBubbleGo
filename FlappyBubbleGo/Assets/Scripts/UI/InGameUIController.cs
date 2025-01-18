@@ -9,7 +9,6 @@ public class InGameUIController : SingleTon<InGameUIController>
     public TMP_Text killsText;
     public TMP_Text alertText;
     public Button backButton;
-
     private void Start()
     {
         backButton.onClick.AddListener(delegate { UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); });
@@ -20,7 +19,7 @@ public class InGameUIController : SingleTon<InGameUIController>
     {
         scoreText.text ="Distance:" +  score.ToString();
     }
-
+    
     public void SetAlert(string alert)
     {
         alertText.text =alert;
