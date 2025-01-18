@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D Rb{ get; private set; }
     private Transform bubble;
     private Transform girl;
+    private Transform upCheckPoint;
+    private Transform downCheckPoint;
     private LineRenderer line;
     private AnimationTrigger animTrigger;
     #endregion
@@ -29,6 +32,10 @@ public class Player : MonoBehaviour
     public float weightSpeed;
     public float basicSpeed;
     #endregion
+
+    #region Events
+    public Action PlayerDied;
+    #endregion
     
     // Start is called before the first frame update
     void Start()
@@ -41,6 +48,8 @@ public class Player : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         bubble = transform.Find("Bubble");
         girl = transform.Find("Girl");
+        upCheckPoint = transform.Find("UpCheckPoint");
+        downCheckPoint = transform.Find("DownCheckPoint");
         bubbleCurWeight = bubbleWeight;
     }
 
@@ -54,10 +63,11 @@ public class Player : MonoBehaviour
 
     private void DeadCheck()
     {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(girl.position);
-        if (screenPos.x < Screen.width || screenPos.x < 0 || screenPos.y > Screen.height || screenPos.y < 0)
+        Vector3 upPos = Camera.main.WorldToScreenPoint(upCheckPoint.position);
+        Vector3 downPos = Camera.main.WorldToScreenPoint(downCheckPoint.position);
+        if (upPos.y > Screen.height || downPos.y < 0)
         {
-            
+            PlayerDied?.Invoke();
         }
     }
 
