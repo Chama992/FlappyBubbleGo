@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LyhScene.unity
+    guid: 15ca40c0ffd0bc644b4bf367d336ecad
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: cbd3c38d8b250d743b18f2b969639819
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
