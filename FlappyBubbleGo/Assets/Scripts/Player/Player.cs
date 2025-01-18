@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -19,12 +20,14 @@ public class Player : MonoBehaviour
     #region MoveParameter
 
     [Header("Parameter")] 
+    public float bubbleWeight;
+    public float bubbleCurWeight;
     public float bulletOffset;
     public float bulletSpeed;
     private Vector3 bulletDir;
     public float lineLength;
-    private float _originScale; 
-    public float scaleSpeed;
+    public float weightSpeed;
+    public float basicSpeed;
     #endregion
     
     // Start is called before the first frame update
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         bubble = transform.Find("Bubble");
         girl = transform.Find("Girl");
-        _originScale = bubble.localScale.x;
+        bubbleCurWeight = bubbleWeight;
     }
 
     // Update is called once per frame
@@ -70,12 +73,16 @@ public class Player : MonoBehaviour
             bulletDir = (targetPositon - girl.position).normalized;
         }
     }
-    
-    public void CreateBullet() => Instantiate(bulletPrefab,girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>().Initialize(bulletSpeed,1,bulletDir);
-
+    public void CreateBullet()
+    {
+        Instantiate(bulletPrefab, girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>().Initialize(bulletSpeed, 1, bulletDir);
+        bubbleCurWeight -= 50;
+    }
     private void PlayerFlow()
     {
-        bubble.localScale += bubble.localScale * (scaleSpeed * Time.deltaTime);
-        Rb.velocity = Vector3.up * bubble.localScale.x / _originScale; 
+        bubbleCurWeight += weightSpeed * Time.deltaTime;
+        float ratio = bubbleCurWeight / bubbleWeight;
+        bubble.localScale = new Vector3(ratio,ratio,ratio);
+        Rb.velocity =Vector3.up * (bubbleCurWeight - bubbleWeight) * basicSpeed;
     }
 }

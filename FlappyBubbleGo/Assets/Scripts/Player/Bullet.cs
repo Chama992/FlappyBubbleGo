@@ -13,8 +13,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // rb.velocity = moveDirection.normalized * moveSpeed;
-        Debug.Log(moveDirection);
     }
 
     private void Update()
