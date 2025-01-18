@@ -22,9 +22,13 @@ public class BgController : MonoBehaviour
     {
         if (moveFlag)
         {
-            if (transform.position.x < -18.7f+weiyi)
+            if (transform.position.x < -51.32f+weiyi)
             { 
                 transform.position = startPos;
+            }
+            if (Time.time >= 40)
+            {
+                speed = -0.01f - Time.time / 6000;
             }
             transform.Translate(speed,0,0);
         }
@@ -37,5 +41,6 @@ public class BgController : MonoBehaviour
     public void BeginMove()
     {
         moveFlag = true;
+
     }
 }

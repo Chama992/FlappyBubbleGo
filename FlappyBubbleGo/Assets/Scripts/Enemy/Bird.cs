@@ -11,6 +11,7 @@ public class Bird : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+   
     private float Speed = -1f;
     [SerializeField] private AudioSource deathSoundEffect;
 
@@ -19,15 +20,18 @@ public class Bird : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
     }
 
     private void Update()
     {
         if (Time.time >= 20)
         {
-            Speed = -1f-Time.time/60;
+            Speed = -1f - Time.time/40;
         }
         rb.velocity = new Vector2(Speed, 0);
+        
+       
     }
     
     public void Die()
