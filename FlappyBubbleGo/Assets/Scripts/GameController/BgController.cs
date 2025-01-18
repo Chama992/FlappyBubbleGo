@@ -11,7 +11,7 @@ public class BgController : MonoBehaviour
     public float speed = -0.01f;
 
     public float weiyi = 0f;
-    
+    public bool moveFlag = false;
     void Start()
     {
         startPos = transform.position;
@@ -20,11 +20,22 @@ public class BgController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < -18.7f+weiyi)
-        { 
-            transform.position = startPos;
+        if (moveFlag)
+        {
+            if (transform.position.x < -18.7f+weiyi)
+            { 
+                transform.position = startPos;
+            }
+            transform.Translate(speed,0,0);
         }
+    }
 
-        transform.Translate(speed,0,0);
+    public void StopMove()
+    {
+        moveFlag = false;
+    }
+    public void BeginMove()
+    {
+        moveFlag = true;
     }
 }

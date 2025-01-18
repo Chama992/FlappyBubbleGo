@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour
             Bird bird = other.GetComponent<Bird>();
             if (bird)
             {
+                MySoundManager.PlayAudio(Globals.BirdHit);
                 Destroy(this.gameObject);
                 bird.Die();
                 GameController.Instance.AddScore(5);

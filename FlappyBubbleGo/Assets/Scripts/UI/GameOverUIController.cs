@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverUIController : MonoBehaviour
@@ -11,17 +12,10 @@ public class GameOverUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rebornButton.onClick.AddListener(RestartGame);
+        rebornButton.onClick.AddListener(Reborn);
         quitButton.onClick.AddListener(QuitGame);
-        restartButton.onClick.AddListener(Reborn);
+        restartButton.onClick.AddListener(RestartGame);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GetGameValue()
     {
         
@@ -29,7 +23,7 @@ public class GameOverUIController : MonoBehaviour
 
     public void RestartGame()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void QuitGame()
     {

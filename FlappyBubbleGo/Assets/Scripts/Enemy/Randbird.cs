@@ -7,8 +7,9 @@ using Random = UnityEngine.Random;
 
 public class Randbird : MonoBehaviour
 {
-    public GameObject birdPrefab;
-    public float generateTime = 5 ;
+    public bool canGenerate = false;
+    public GameObject birdPrefab;//��������һ��prefab
+    public float generateTime;
     public bool IsCanCreat
     {
         get
@@ -45,6 +46,14 @@ public class Randbird : MonoBehaviour
         {
             CreatPrefab();
         }
+    }
+    public void StopGenerate()
+    {
+        canGenerate = false;
+    }
+    public void BeginGenerate()
+    {
+        canGenerate = true;
     }
 }
 

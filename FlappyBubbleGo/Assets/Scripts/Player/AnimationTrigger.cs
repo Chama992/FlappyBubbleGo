@@ -5,17 +5,22 @@ using UnityEngine;
     
 public class AnimationTrigger:MonoBehaviour
 {
-    private Animator Anim;
+    private Animator GirlAnim;
     private Player player;
     private void Start()
     {
-        Anim = GetComponentInParent<Animator>();
+        GirlAnim = GetComponent<Animator>();
         player = GetComponentInParent< Player >();
     }
 
     public void ShootOver()
     {
-        Anim.SetBool("Shoot",false);
+        MySoundManager.PlayOneAudio(Globals.Shoot);
+        GirlAnim.SetBool("Shoot",false);
         player.CreateBullet();
+    }
+    public void Blow()
+    {
+        MySoundManager.PlayOneAudio(Globals.GirlBlowBubble);
     }
 }
