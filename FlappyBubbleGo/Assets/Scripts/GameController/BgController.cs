@@ -24,6 +24,7 @@ public class BgController : MonoBehaviour
         { 
             transform.position = startPos;
         }
+
         transform.Translate(speed,0,0);
     }
 }

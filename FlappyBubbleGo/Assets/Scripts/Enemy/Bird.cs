@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class Bird : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private float Speed = -1f;
     [SerializeField] private AudioSource deathSoundEffect;
 
     // Start is called before the first frame update
@@ -21,7 +23,11 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        rb.velocity = new Vector2(-1f, 0);
+        if (Time.time >= 20)
+        {
+            Speed = -1f-Time.time/60;
+        }
+        rb.velocity = new Vector2(Speed, 0);
     }
     
     public void Die()

@@ -7,19 +7,19 @@ using Random = UnityEngine.Random;
 
 public class Randbird : MonoBehaviour
 {
-    public GameObject birdPrefab;//��������һ��prefab
-    public float generateTime;
+    public GameObject birdPrefab;
+    public float generateTime = 5 ;
     public bool IsCanCreat
     {
         get
         {
             return time <= 0f;
         }
-    }//�����ж�time�����Ƿ��Ѿ�Ϊ0��������ʱ���Ƿ�ﵽ����
-    private float time;//ʱ����
+    }
+    private float time;
     void Start()
     {
-        time = generateTime;//ʱ��������
+        time = math.max(generateTime, 2f);
     }
     void CreatPrefab()
     {
@@ -28,14 +28,18 @@ public class Randbird : MonoBehaviour
         float yMin = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, Camera.main.transform.position.z)).y;
         float y = Random.Range(yMax, yMin);
         Vector3 pos = new Vector3(outScreenPos.x * 1.5f, y, 0);
-        Instantiate(birdPrefab,pos,quaternion.identity);//ʵ����һ��prefab
-        time = generateTime;//ʹtime������λ
+        Instantiate(birdPrefab,pos,quaternion.identity);
+        if(Time.time>= 20)
+        {
+            generateTime = 5 - Time.time / 20;
+        }
+        time = math.max(generateTime, 1.5f); 
     }
     void Update()
     {
         if (time > 0)
         {
-            time -= Time.deltaTime;//��ȥÿһ֡�����ĵ�ʱ��
+            time -= Time.deltaTime;
         }
         if (IsCanCreat)
         {
