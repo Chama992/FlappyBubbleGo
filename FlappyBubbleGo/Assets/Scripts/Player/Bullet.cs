@@ -7,17 +7,16 @@ public class Bullet : MonoBehaviour
 {
     private float moveSpeed;
     private Vector3 moveDirection;
-    private float scale;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = moveDirection.normalized * moveSpeed; 
     }
 
     private void Update()
     {
-        rb.velocity = moveDirection.normalized * moveSpeed;
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
         if (pos.x > Screen.width || pos.x < 0 || pos.y > Screen.height || pos.y < 0)
         {
@@ -35,15 +34,14 @@ public class Bullet : MonoBehaviour
                 MySoundManager.PlayAudio(Globals.BirdHit);
                 Destroy(this.gameObject);
                 bird.Die();
-                GameController.Instance.AddScore(5);
+                GameController.Instance.AddKills(1);
             }
         }
     }
 
-    public void Initialize( float _moveSpeed,float _scale,Vector3 _moveDirection)
+    public void Initialize( float _moveSpeed,Vector3 _moveDirection)
     {
         moveSpeed = _moveSpeed;
-        scale = _scale;
         moveDirection = _moveDirection;
     }
 }

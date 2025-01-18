@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class GameController : SingleTon<GameController>
@@ -10,10 +11,12 @@ public class GameController : SingleTon<GameController>
     private Randbird randbird;
     public GameObject GameOverPanel;
     public Texture2D mouseTexture;
-    public int score;
+    public int kills;
     private bool isGameOver;
     public AudioSource bgm;
     public AudioSource obgm;
+    public int distance;
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -26,7 +29,8 @@ public class GameController : SingleTon<GameController>
         this.StartCoroutine(this.GameBeginTimer());
         bgController.StopMove();
         randbird.StopGenerate();
-        InGameUIController.Instance.SetScore(score);
+        InGameUIController.Instance.SetKills(kills);
+        InGameUIController.Instance.SetDistance(kills);
     }
     public IEnumerator GameBeginTimer()
     {
@@ -46,14 +50,14 @@ public class GameController : SingleTon<GameController>
         randbird.BeginGenerate();
         InGameUIController.Instance.SetAlert("");
         Player.enabled = true;
+        InGameUIController.Instance.backButton.enabled = true;
         this.StartCoroutine(this.ScoreAddWithTime());
     }
     public IEnumerator ScoreAddWithTime()
     {
         while(!isGameOver)
         {
-            score++;
-            SetScoreText();
+            AddDistance(1);
             yield return new WaitForSeconds(1f);
         }
     }
@@ -86,14 +90,14 @@ public class GameController : SingleTon<GameController>
         Player.PlayerDied -= GameOver;
     }
 
-    public void AddScore(int scoreValue)
+    public void AddDistance(int _distance)
     {
-        score += scoreValue;
-        SetScoreText();
+        distance += _distance;
+        InGameUIController.Instance.SetDistance(distance);
     }
-
-    public void SetScoreText()
+    public void AddKills(int killCount)
     {
-        InGameUIController.Instance.SetScore(score);
+        kills += killCount;
+        InGameUIController.Instance.SetKills(kills);
     }
 }

@@ -20,11 +20,13 @@ public class UIController : MonoBehaviour
     {
         // panel1.SetActive(false);  
         // panel2.SetActive(true);
+        MySoundManager.PlayAudio(Globals.PressButtonSound);
         SceneManager.LoadScene("LyhScene");
     }
 
     private void ExitGame()
     {
+        MySoundManager.PlayAudio(Globals.PressButtonSound);
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
         #else

@@ -38,13 +38,16 @@ public class Randbird : MonoBehaviour
     }
     void Update()
     {
-        if (time > 0)
+        if (canGenerate)
         {
-            time -= Time.deltaTime;
-        }
-        if (IsCanCreat)
-        {
-            CreatPrefab();
+            if (time > 0)
+            {
+                time -= Time.deltaTime;
+            }
+            if (IsCanCreat)
+            {
+                CreatPrefab();
+            }
         }
     }
     public void StopGenerate()

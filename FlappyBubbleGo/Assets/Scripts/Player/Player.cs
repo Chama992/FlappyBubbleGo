@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
     }
     public void CreateBullet()
     {
-        Instantiate(bulletPrefab, girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>().Initialize(bulletSpeed, 1, bulletDir);
+        Instantiate(bulletPrefab, girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>().Initialize(bulletSpeed, bulletDir);
         bubbleCurWeight -= 50;
     }
     private void PlayerFlow()

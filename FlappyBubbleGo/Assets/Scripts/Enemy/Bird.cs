@@ -30,13 +30,10 @@ public class Bird : MonoBehaviour
             Speed = -1f - Time.time/40;
         }
         rb.velocity = new Vector2(Speed, 0);
-        
-       
     }
     
     public void Die()
     {
-        // anim.SetTrigger("death");
         Destroy(gameObject);
     }
 }
