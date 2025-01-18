@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     #region Components
-    public Animator Anim { get; private set; }
+    public Animator GirlAnim { get; private set; }
     public Rigidbody2D Rb{ get; private set; }
     private Transform bubble;
     private Transform girl;
@@ -24,15 +24,14 @@ public class Player : MonoBehaviour
 
     [Header("Parameter")] 
     public float bubbleWeight;
-    public float bubbleCurWeight;
+    private float bubbleCurWeight;
     public float bulletOffset;
     public float bulletSpeed;
     private Vector3 bulletDir;
-    public float lineLength;
+    // public float lineLength;
     public float weightSpeed;
     public float basicSpeed;
     #endregion
-
     #region Events
     public Action PlayerDied;
     #endregion
@@ -40,11 +39,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        line= GetComponentInChildren<LineRenderer>();
-        line.positionCount = 2;
-        line.endWidth = 0.1f;
-        line.startWidth = 0.1f;
-        Anim  = GetComponentInChildren<Animator>();
+        // line= GetComponentInChildren<LineRenderer>();
+        // line.positionCount = 2;
+        // line.endWidth = 0.1f;
+        // line.startWidth = 0.1f;
+        GirlAnim  = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
         bubble = transform.Find("Bubble");
         girl = transform.Find("Girl");
@@ -74,12 +73,12 @@ public class Player : MonoBehaviour
     private void Shoot()
     {   
         Vector3 mousePositon = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        Vector3 targetPositon = girl.position + (mousePositon - girl.position).normalized * lineLength;
-        line.SetPosition(0, girl.position);
-        line.SetPosition(1, targetPositon);
+        Vector3 targetPositon = girl.position + (mousePositon - girl.position).normalized;
+        // line.SetPosition(0, girl.position);
+        // line.SetPosition(1, targetPositon);
         if (Input.GetMouseButtonDown(0))
         {
-            Anim.SetBool("Shoot",true);
+            GirlAnim.SetBool("Shoot",true);
             bulletDir = (targetPositon - girl.position).normalized;
         }
     }

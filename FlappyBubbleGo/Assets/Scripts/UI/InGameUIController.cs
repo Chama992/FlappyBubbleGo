@@ -1,9 +1,13 @@
+using System;
+using TMPro;
 using UnityEngine;
 
-namespace UI
+public class InGameUIController : Singleton<InGameUIController>
 {
-    public class InGameUIController : MonoBehaviour
+    public TMP_Text scoreText;
+
+    public void SetScore(int score)
     {
-        
+        scoreText.text ="Score:" +  score.ToString();
     }
 }

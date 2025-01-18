@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bgController : MonoBehaviour
+public class BgController : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -11,7 +11,7 @@ public class bgController : MonoBehaviour
     public float speed = -0.01f;
 
     public float weiyi = 0f;
-
+    
     void Start()
     {
         startPos = transform.position;

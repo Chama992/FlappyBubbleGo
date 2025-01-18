@@ -32,7 +32,9 @@ public class Bullet : MonoBehaviour
             Bird bird = other.GetComponent<Bird>();
             if (bird)
             {
+                Destroy(this.gameObject);
                 bird.Die();
+                GameController.Instance.AddScore(5);
             }
         }
     }
