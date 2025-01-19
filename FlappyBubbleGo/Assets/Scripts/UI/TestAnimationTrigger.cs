@@ -19,4 +19,8 @@ public class TestAnimationTrigger:MonoBehaviour
         GirlAnim.SetBool("Shoot",false);
         player.CreateBullet();
     }
+    public void Sleep()
+    {
+        MySoundManager.PlayOneAudio(Globals.GirlSleepin);
+    }
 }

@@ -16,7 +16,8 @@ public class GameController : SingleTon<GameController>
     public AudioSource bgm;
     public AudioSource obgm;
     public int distance;
-
+    public float floatDistance;
+    public int gameTime;
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -57,7 +58,8 @@ public class GameController : SingleTon<GameController>
     {
         while(!isGameOver)
         {
-            AddDistance(1);
+            SetDistance();
+            gameTime += 1;
             yield return new WaitForSeconds(1f);
         }
     }
@@ -81,6 +83,7 @@ public class GameController : SingleTon<GameController>
         //停止背景移动
         bgController.StopMove();
         //打开结束UI界面
+        InGameUIController.Instance.gameObject.SetActive(false);
         GameOverPanel.GetComponent<GameOverUIController>().GetGameValue();
         GameOverPanel.SetActive(true);
     }
@@ -90,9 +93,9 @@ public class GameController : SingleTon<GameController>
         Player.PlayerDied -= GameOver;
     }
 
-    public void AddDistance(int _distance)
+    public void SetDistance()
     {
-        distance += _distance;
+        distance = (int)floatDistance;
         InGameUIController.Instance.SetDistance(distance);
     }
     public void AddKills(int killCount)

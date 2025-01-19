@@ -15,7 +15,7 @@ public class InGameUIController : SingleTon<InGameUIController>
         backButton.enabled = false;
     }
 
-    public void SetDistance(int score)
+    public void SetDistance(float score)
     {
         scoreText.text ="Distance:" +  score.ToString();
     }

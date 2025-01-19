@@ -30,9 +30,9 @@ public class Randbird : MonoBehaviour
         float y = Random.Range(yMax, yMin);
         Vector3 pos = new Vector3(outScreenPos.x * 1.5f, y, 0);
         Instantiate(birdPrefab,pos,quaternion.identity);
-        if(Time.time>= 20)
+        if(GameController.Instance.gameTime>= 20)
         {
-            generateTime = 5 - Time.time / 20;
+            generateTime = 5 - (GameController.Instance.gameTime-20) * 0.055f;
         }
         time = math.max(generateTime, 1.5f); 
     }

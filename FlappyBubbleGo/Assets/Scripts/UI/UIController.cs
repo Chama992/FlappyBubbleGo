@@ -13,7 +13,6 @@ public class UIController : MonoBehaviour
     private BeginAnimController beginAnimController;
     public Action GameBegin;
     public GameObject howl;
-    public GameObject bg;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +33,6 @@ public class UIController : MonoBehaviour
         // panel2.SetActive(true);
         MySoundManager.PlayAudio(Globals.PressButtonSound);
         panel1.SetActive(false);
-        bg.SetActive(false);
         howl.SetActive(true);
         // SceneManager.LoadScene("LyhScene");
         StartCoroutine(GameBeginAnimation());

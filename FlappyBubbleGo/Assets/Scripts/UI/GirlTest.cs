@@ -70,7 +70,9 @@ public class GirlTest : MonoBehaviour
     }
     public void CreateBullet()
     {
-        Instantiate(bulletPrefab, girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>().Initialize(bulletSpeed, bulletDir);
+        Bullet bullet = Instantiate(bulletPrefab, girl.position + bulletDir * bulletOffset, Quaternion.identity).GetComponent<Bullet>();
+        bullet.Initialize(bulletSpeed, bulletDir);
+        bullet.isTesting = true;
         bubbleCurWeight -= 30;
     }
 }

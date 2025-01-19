@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private float moveSpeed;
     private Vector3 moveDirection;
     private Rigidbody2D rb;
+
+    public bool isTesting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,10 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
                 MySoundManager.PlayAudio(Globals.BirdHit);
                 bird.Die();
-                GameController.Instance.AddKills(1);
+                if (!isTesting)
+                {
+                    GameController.Instance.AddKills(1);
+                }
             }
         }
     }

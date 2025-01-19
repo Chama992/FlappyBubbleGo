@@ -9,9 +9,10 @@ public class BgController : MonoBehaviour
     Vector3 startPos;
 
     public float speed = -0.005f;
-
+    public float maxSpeed = -0.1f;
     public float weiyi = 0f;
     public bool moveFlag = false;
+    public bool isTest = false;
     void Start()
     {
         startPos = transform.position;
@@ -26,11 +27,16 @@ public class BgController : MonoBehaviour
             { 
                 transform.position = startPos;
             }
-            if (Time.time >= 40)
+            if (GameController.Instance.gameTime >= 20)
             {
-                speed = -0.005f - Time.time / 6000;
+                speed = -0.005f - (GameController.Instance.gameTime -20 ) * 0.0003f;
             }
+            speed = Mathf.Max(speed, maxSpeed);
             transform.Translate(speed,0,0);
+            if (!isTest)
+            {
+                GameController.Instance.floatDistance +=-speed * Time.deltaTime * 1000f /5;
+            }
         }
     }
 

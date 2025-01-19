@@ -29,7 +29,7 @@ public class GameOverUIController : MonoBehaviour
         if (bestDistance < distance )
         {
             bestScoreText.text = distance.ToString();
-            PlayerPrefs.SetInt("bestDistance", distance);
+            PlayerPrefs.SetInt("bestDistance",distance);
         }
         else
         {
